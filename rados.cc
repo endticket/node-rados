@@ -668,6 +668,7 @@ void Ioctx::wait_complete(uv_work_t *req) {
 
 
 void Ioctx::callback_complete(uv_work_t *req) {
+  Isolate* isolate = Isolate::GetCurrent();
   Nan::HandleScope scope;
   AsyncData *asyncdata = (AsyncData *)req->data;
 
