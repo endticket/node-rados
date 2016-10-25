@@ -1,11 +1,11 @@
 {
 	"name": "rados",
-	"version": "0.2.100",
+	"version": "0.2.101",
 	"description" : "Ceph rados client for node.js",
 	"author" : "Laurent Barbe <laurent@ksperis.com>",
  	"repository" : {
 		"type" : "git",
-		"url" : "git://github.com/ksperis/node-rados.git"
+		"url" : "git://github.com/endticket/node-rados.git"
 	},
 	"dependencies" : {
 		"bindings": "^1.2.1",
