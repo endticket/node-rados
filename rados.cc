@@ -157,9 +157,10 @@ NAN_METHOD(Rados::connect) {
 
   if (err == 0) {
     obj->state = STATE_CONNECTED;
+    info.GetReturnValue().Set(Nan::True());
   }
 
-  info.GetReturnValue().Set(Nan::New<Number>(-err));
+  info.GetReturnValue().Set(Nan::False());
 }
 
 
@@ -530,6 +531,8 @@ NAN_METHOD(Ioctx::getxattr) {
     int ret = rados_getxattr(obj->ioctx, *oid, *name, temp_buffer, 0);
     if (ret < 0) {
       info.GetReturnValue().Set(Nan::Null());
+      return;
+
     } else {
       size = ret;
     }
@@ -668,7 +671,8 @@ void Ioctx::wait_complete(uv_work_t *req) {
 
 
 void Ioctx::callback_complete(uv_work_t *req) {
-  Isolate* isolate = Isolate::GetCurrent();
+  Isolate* VARIABLE_IS_NOT_USED isolate = Isolate::GetCurrent();
+
   Nan::HandleScope scope;
   AsyncData *asyncdata = (AsyncData *)req->data;
 
